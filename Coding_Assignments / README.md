@@ -1,1 +1,1 @@
-This is where the code for Instruction Fetch will live
+This is where the folders for Coding assignments will live.
