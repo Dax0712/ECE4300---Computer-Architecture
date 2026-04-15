@@ -17,6 +17,7 @@ module Execute(
     output wire [1:0] ctlwb_out,
     output wire [1:0] ctlm_out,
     output wire [31:0] adder_out,
+    output wire zero,
     output wire [31:0] alu_result_out, rdata2_out,
     output wire [4:0] muxout_out
 );
@@ -46,7 +47,7 @@ adder adder3(
     .add_out(adder_result_in)
 );
 // Essentially and intuitively means:
-// adder_calc = npc + s_extend
+// adder_result_in = npc + s_extend
 
 //====================================================================================================
 
@@ -131,6 +132,7 @@ ex_mem ex_mem3(
     .ctlwb_in(ctlwb_in),
     .ctlm_in(ctlm_in),
     .adder_in(adder_result_in),
+    .zero_in(aluzero),
     .alu_in(aluout),
     .readdat2_in(rdata2),
     .mux_in(muxout),
@@ -138,6 +140,7 @@ ex_mem ex_mem3(
     .ctlm_out(ctlm_out),
     .adder_out(adder_out),
     .alu_result_out(alu_result_out),
+    .zero_out(zero),
     .rdata2_out(rdata2_out),
     .muxout_out(muxout_out)
 );
