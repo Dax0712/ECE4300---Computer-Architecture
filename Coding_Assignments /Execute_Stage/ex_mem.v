@@ -12,9 +12,11 @@ module ex_mem(
     input wire [31:0] alu_in,
     input wire [31:0] readdat2_in,
     input wire [4:0] mux_in,
+    input wire zero_in,
     output reg [1:0] ctlwb_out,
     output reg [1:0] ctlm_out,
     output reg [31:0] adder_out,
+    output reg zero_out,
     output reg [31:0] alu_result_out, rdata2_out,
     output reg [4:0] muxout_out
 );
@@ -23,6 +25,7 @@ initial begin
     ctlwb_out <= 0;
     ctlm_out <= 0;
     adder_out <= 0;
+    zero_out <= 0;
     alu_result_out <= 0;
     rdata2_out <= 0;
     muxout_out <= 0;
@@ -33,6 +36,7 @@ always @(posedge clk) begin
     ctlm_out <= ctlm_in;
 
     adder_out <= adder_in;
+    zero_out <= zero_in;
     alu_result_out <= alu_in;
     rdata2_out <= readdat2_in;
     muxout_out <= mux_in;
